@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>All clients</title>
+</head>
+<body>
+
+<a href="/clients/client.html">Adauga un nou client</a>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Nume</th>
+        <th>Prenume</th>
+        <th>Telefon</th>
+        <th>Adresa de mail</th>
+        <th>&nbsp;</th>
+        <th>&nbsp;</th>
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="client: ${lista}">
+        <td th:text="${client.id}"></td>
+        <td th:text="${client.firstName}"></td>
+        <td th:text="${client.lastName}"></td>
+        <td th:text="${client.phoneNumber}"></td>
+        <td th:text="${client.emailAddress}"></td>
+        <td><a th:href="@{/clients/update/{id}(id=${client.id})}">Update</a></td>
+        <td><a th:href="@{/clients/delete/{id}(id=${client.id})}">Delete</a></td>
+
+    </tr>
+    </tbody>
+</table>
+
+
+
+</body>
+</html>
