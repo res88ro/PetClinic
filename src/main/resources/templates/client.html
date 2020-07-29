@@ -11,27 +11,34 @@
         .errorLabel{
             color: red;
         }
+
     </style>
 </head>
 <body>
 <form action="#" th:action="@{/clients/save/{id}(id=${client.id})}" th:object="${client}" method="post">
-    <label>First name: <input type="text" required placeholder="What is the client's first name?" th:field="*{firstName}" th:class="${#fields.hasErrors('firstName')} ? errorField" /></label>
+    <label>First name: <input type="text" required placeholder="What is the client's first name?"
+                              th:field="*{firstName}"
+                              th:class="${#fields.hasErrors('firstName')} ? errorField"/></label>
     <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" th:class="errorLabel"></span>
     <br/>
 
-    <label>Last name: <input type="text" required placeholder="What is the client's last name?" th:field="*{lastName}" th:class="${#fields.hasErrors('lastName')} ? errorField" /></label>
+    <label>Last name: <input type="text" required placeholder="What is the client's last name?" th:field="*{lastName}"
+                             th:class="${#fields.hasErrors('lastName')} ? errorField"/></label>
     <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" th:class="errorLabel"></span>
     <br/>
 
-    <label>E-mail: <input type="email" placeholder="E-mail" th:field="*{emailAddress}" th:class="${#fields.hasErrors('emailAddress')} ? errorField" /></label>
+    <label>E-mail: <input type="email" placeholder="E-mail" th:field="*{emailAddress}"
+                          th:class="${#fields.hasErrors('emailAddress')} ? errorField"/></label>
     <span th:if="${#fields.hasErrors('emailAddress')}" th:errors="*{emailAddress}" th:class="errorLabel"></span>
     <br/>
 
-    <label>Phone number: <input type="tel" placeholder="phoneNumber" th:field="*{phoneNumber}" th:class="${#fields.hasErrors('phoneNumber')} ? errorField" /></label>
+    <label>Phone number: <input type="tel" placeholder="phoneNumber" th:field="*{phoneNumber}"
+                                pattern="^[0-9]{10}$"
+                                th:class="${#fields.hasErrors('phoneNumber')} ? errorField"/></label>
     <span th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" th:class="errorLabel"></span>
     <br/>
 
-    <input type="submit" /> <input type="reset" />
+    <input type="submit"/> <input type="reset"/>
 </form>
 </body>
 </html>
